@@ -1,11 +1,17 @@
+import toast from 'react-hot-toast'
 import { MdDelete, MdEdit } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+import { deleteTodo } from '../slices/todoSlice'
 import styles from '../styles/modules/todoItem.module.scss'
 import { getClasses } from '../utils/getClasses'
 
 const TodoItem = ({todo}) => {
 
-    const handleDelete = () => {
+    const dispatch = useDispatch()
 
+    const handleDelete = () => {
+        dispatch(deleteTodo(todo.id))
+        toast.success("Todo Deleted Successfully")
     }
 
     const handleUpdate = () => {
