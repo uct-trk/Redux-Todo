@@ -25,6 +25,7 @@ export const TodoModal = ({ modalOpen, setModalOpen }) => {
         }))
         toast.success('Task Added Successfully')
         setModalOpen(false)
+        setTitle('')
     } else {
         toast.error("Title must fill")
     }
