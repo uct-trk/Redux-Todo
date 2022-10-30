@@ -11,13 +11,14 @@ import { useEffect } from "react";
 export const TodoModal = ({ type ,modalOpen, setModalOpen, todo }) => {
 
   const [title,setTitle] = useState('')
-  const [status,setStatus] = useState('complete')
+  const [status,setStatus] = useState('incomplete')
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     if(type === 'update' && todo){
         setTitle(todo.title)
+        console.log(todo.status)
         setStatus(todo.status);
     } else {
         setTitle('')
@@ -80,7 +81,7 @@ export const TodoModal = ({ type ,modalOpen, setModalOpen, todo }) => {
             </label>
             <label htmlFor="status">
               Status
-              <select name="status" id="status" onChange={(e) => setStatus(e.target.value)}>
+              <select name="status" id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
                 <option value="incomplete">Incomplete</option>
                 <option value="complete">Completed</option>
               </select>
